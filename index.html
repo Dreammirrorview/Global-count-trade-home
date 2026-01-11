@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Count Trading - No Lost No Regrets | Powered by SuperNinja</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23e94560' width='100' height='100'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>G</text></svg>">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Super Ninja Console -->
+        <div id="super-ninja-console" class="hidden">
+            <div class="console-header">
+                <h3>🥷 Super Ninja Console</h3>
+                <button class="close-console" onclick="toggleSuperNinjaConsole()">×</button>
+            </div>
+            <div class="console-content">
+                <div class="console-section">
+                    <h4>📊 System Status</h4>
+                    <div id="system-status"></div>
+                </div>
+                <div class="console-section">
+                    <h4>🔍 Debug Info</h4>
+                    <div id="debug-info"></div>
+                </div>
+                <div class="console-section">
+                    <h4>📝 Console Logs</h4>
+                    <div id="console-logs"></div>
+                </div>
+                <div class="console-section">
+                    <h4>⚙️ Quick Actions</h4>
+                    <div class="console-actions">
+                        <button onclick="clearDemoData()">Clear Demo Data</button>
+                        <button onclick="loadDemoData()">Load Demo Data</button>
+                        <button onclick="resetSystem()">Reset System</button>
+                        <button onclick="runDiagnostics()">Run Diagnostics</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div id="mode-toggle">
+            <span class="mode-label">Mode:</span>
+            <button class="mode-btn active" id="demo-mode-btn" onclick="switchMode('demo')">Demo</button>
+            <button class="mode-btn" id="real-mode-btn" onclick="switchMode('real')">Real</button>
+        </div>
+
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Global Count Trading</h1>
+                    <p>No Lost No Regrets</p>
+                    <small class="owner-tag">Owned by Olawale Abdul-Ganiyu</small>
+                </div>
+                <div class="nav-buttons">
+                    <button class="btn primary" onclick="showPage('login')">Login</button>
+                    <button class="btn secondary" onclick="showPage('register')">Register</button>
+                    <button class="btn console" onclick="toggleSuperNinjaConsole()">🥷 Console</button>
+                </div>
+            </nav>
+
+            <header class="hero">
+                <div class="hero-content">
+                    <h1>Welcome to Global Count Trading</h1>
+                    <p class="tagline">No Lost No Regrets - The Future of Trading</p>
+                    <div class="owner-badge">
+                        <span>👑 Founded & Owned by</span>
+                        <strong>Olawale Abdul-Ganiyu</strong>
+                    </div>
+                </div>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">🔄</div>
+                        <h3>11-Person Matrix</h3>
+                        <p>Get paid by 10 people when cycle completes</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h3>Multiple Plans</h3>
+                        <p>Invest from ₦10,000 to ₦600,000</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚽</div>
+                        <h3>Sports Betting</h3>
+                        <p>Integrated betting and casino platform</p>
+                    </div>
+                </div>
+            </header>
+
+            <section class="plans">
+                <h2>Contribution Plans</h2>
+                <div class="plan-grid">
+                    <div class="plan">
+                        <h3>Starter</h3>
+                        <p>₦10,000</p>
+                        <p class="return">Return: ₦81,000</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>Bronze</h3>
+                        <p>₦100,000</p>
+                        <p class="return">Return: ₦989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>Silver</h3>
+                        <p>₦200,000</p>
+                        <p class="return">Return: ₦1,989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>Gold</h3>
+                        <p>₦300,000</p>
+                        <p class="return">Return: ₦2,989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>Platinum</h3>
+                        <p>₦400,000</p>
+                        <p class="return">Return: ₦3,989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>Diamond</h3>
+                        <p>₦500,000</p>
+                        <p class="return">Return: ₦4,989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                    <div class="plan">
+                        <h3>VIP</h3>
+                        <p>₦600,000</p>
+                        <p class="return">Return: ₦5,989,500</p>
+                        <button class="btn" onclick="showPage('register')">Start Now</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="license-info">
+                <h2>Legally Licensed & Regulated</h2>
+                <div class="license-details">
+                    <p>📜 Licensed to operate worldwide</p>
+                    <p>👤 Owner: <strong>Olawale Abdul-Ganiyu</strong></p>
+                    <p>📧 Email: adeganglobal@gmail.com</p>
+                    <p>🎮 Gaming License: GCT-2024-WW-001</p>
+                </div>
+            </section>
+
+            <footer>
+                <div class="footer-content">
+                    <div class="owner-section">
+                        <h3>Global Count Trading</h3>
+                        <p>"No Lost No Regrets"</p>
+                        <p>Founded by Olawale Abdul-Ganiyu</p>
+                    </div>
+                    <div class="footer-links">
+                        <a href="#" onclick="showPage('legal')">Legal Documents</a>
+                        <a href="#" onclick="showPage('terms')">Terms & Conditions</a>
+                        <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+                    </div>
+                    <div class="powered-by">
+                        <p>Powered by 🥷 SuperNinja</p>
+                        <p>© 2024 Global Count Trading. All rights reserved.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2>Login</h2>
+                    <p class="owner-tag">Global Count Trading - Olawale Abdul-Ganiyu</p>
+                </div>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Account Number (10 digits)</label>
+                        <input type="text" id="login-account" required pattern="\d{10}" maxlength="10" placeholder="Enter 10-digit account number">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" required placeholder="Enter password">
+                    </div>
+                    <div class="form-group" id="admin-login-group" style="display: none;">
+                        <label>Admin Key</label>
+                        <input type="password" id="admin-key" placeholder="Enter admin key">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="admin-toggle" onchange="toggleAdminLogin()">
+                            Admin Login
+                        </label>
+                    </div>
+                    <button type="submit" class="btn primary">Login</button>
+                </form>
+                <p>Don't have an account? <a href="#" onclick="showPage('register')">Register</a></p>
+                <button class="btn back" onclick="showPage('landing')">Back to Home</button>
+            </div>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2>Register</h2>
+                    <p class="owner-tag">Join Olawale Abdul-Ganiyu's Trading Platform</p>
+                </div>
+                <form id="register-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="reg-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="reg-email" required placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="reg-phone" required placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <textarea id="reg-address" required placeholder="Enter full address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="reg-password" required placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="reg-confirm-password" required placeholder="Confirm password">
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Passport Photo</label>
+                        <input type="file" id="reg-passport" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload ID Document</label>
+                        <input type="file" id="reg-id" accept="image/*,.pdf" required>
+                    </div>
+                    <button type="submit" class="btn primary">Register</button>
+                </form>
+                <p>Already have an account? <a href="#" onclick="showPage('login')">Login</a></p>
+                <button class="btn back" onclick="showPage('landing')">Back to Home</button>
+            </div>
+        </div>
+
+        <!-- Customer Dashboard -->
+        <div id="customer-dashboard" class="page">
+            <nav class="dashboard-nav">
+                <div class="logo">
+                    <h3>Global Count Trading</h3>
+                    <small class="owner-tag">Olawale Abdul-Ganiyu</small>
+                </div>
+                <div class="user-info">
+                    <span id="customer-name">Welcome</span>
+                    <span class="mode-indicator" id="customer-mode">DEMO MODE</span>
+                    <button class="btn logout" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+
+            <div class="dashboard-content">
+                <aside class="sidebar">
+                    <button class="nav-btn active" onclick="showSection('overview')">
+                        <span>📊</span> Overview
+                    </button>
+                    <button class="nav-btn" onclick="showSection('contribute')">
+                        <span>💰</span> Contribute
+                    </button>
+                    <button class="nav-btn" onclick="showSection('deposit')">
+                        <span>💳</span> Deposit
+                    </button>
+                    <button class="nav-btn" onclick="showSection('withdraw')">
+                        <span>🏦</span> Withdraw
+                    </button>
+                    <button class="nav-btn" onclick="showSection('matrix')">
+                        <span>🔄</span> Matrix Pool
+                    </button>
+                    <button class="nav-btn" onclick="showSection('betting')">
+                        <span>⚽</span> Sports Betting
+                    </button>
+                    <button class="nav-btn" onclick="showSection('casino')">
+                        <span>🎰</span> Casino
+                    </button>
+                    <button class="nav-btn" onclick="showSection('transactions')">
+                        <span>📋</span> Transactions
+                    </button>
+                    <button class="nav-btn" onclick="showSection('profile')">
+                        <span>👤</span> Profile
+                    </button>
+                </aside>
+
+                <main class="main-content">
+                    <!-- Overview Section -->
+                    <section id="overview-section" class="dashboard-section active">
+                        <h2>Dashboard Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">💵</div>
+                                <h3>Account Balance</h3>
+                                <p id="customer-balance" class="amount">₦0.00</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📈</div>
+                                <h3>Active Contribution</h3>
+                                <p id="customer-contribution" class="amount">₦0.00</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">📍</div>
+                                <h3>Position in Matrix</h3>
+                                <p id="customer-position">-</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🔄</div>
+                                <h3>Pool Progress</h3>
+                                <p id="pool-progress">0/11</p>
+                            </div>
+                        </div>
+                        <div class="activity-feed">
+                            <h3>Recent Activity</h3>
+                            <div id="activity-list">
+                                <p class="loading">Loading activity...</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contribute Section -->
+                    <section id="contribute-section" class="dashboard-section">
+                        <h2>Start New Contribution</h2>
+                        <div class="contribution-plans">
+                            <div class="plan-option" data-amount="10000" onclick="selectContribution(10000)">
+                                <h3>₦10,000</h3>
+                                <p>Potential Return: ₦81,000</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="100000" onclick="selectContribution(100000)">
+                                <h3>₦100,000</h3>
+                                <p>Potential Return: ₦989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="200000" onclick="selectContribution(200000)">
+                                <h3>₦200,000</h3>
+                                <p>Potential Return: ₦1,989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="300000" onclick="selectContribution(300000)">
+                                <h3>₦300,000</h3>
+                                <p>Potential Return: ₦2,989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="400000" onclick="selectContribution(400000)">
+                                <h3>₦400,000</h3>
+                                <p>Potential Return: ₦3,989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="500000" onclick="selectContribution(500000)">
+                                <h3>₦500,000</h3>
+                                <p>Potential Return: ₦4,989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                            <div class="plan-option" data-amount="600000" onclick="selectContribution(600000)">
+                                <h3>₦600,000</h3>
+                                <p>Potential Return: ₦5,989,500</p>
+                                <button class="btn">Select</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Deposit Section -->
+                    <section id="deposit-section" class="dashboard-section">
+                        <h2>Deposit Funds</h2>
+                        <div class="deposit-methods">
+                            <button class="method-btn active" onclick="selectDepositMethod('card')">💳 Card Payment</button>
+                            <button class="method-btn" onclick="selectDepositMethod('bank')">🏦 Bank Transfer</button>
+                            <button class="method-btn" onclick="selectDepositMethod('crypto')">₿ Crypto</button>
+                            <button class="method-btn" onclick="selectDepositMethod('wallet')">📱 Mobile Wallet</button>
+                        </div>
+                        <form id="deposit-form" onsubmit="handleDeposit(event)">
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="number" id="deposit-amount" required min="1000" placeholder="Enter amount">
+                            </div>
+                            <div id="card-details" class="payment-details">
+                                <div class="form-group">
+                                    <label>Card Number</label>
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/YY">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" id="card-cvv" placeholder="123">
+                                </div>
+                            </div>
+                            <div id="bank-details" class="payment-details" style="display: none;">
+                                <div class="form-group">
+                                    <label>Upload Receipt</label>
+                                    <input type="file" id="bank-receipt" accept="image/*">
+                                </div>
+                                <div class="form-group">
+                                    <label>Transaction Reference</label>
+                                    <input type="text" id="bank-ref" placeholder="Enter transaction reference">
+                                </div>
+                            </div>
+                            <div id="crypto-details" class="payment-details" style="display: none;">
+                                <div class="form-group">
+                                    <label>Crypto Type</label>
+                                    <select id="crypto-type">
+                                        <option value="bitcoin">Bitcoin (BTC)</option>
+                                        <option value="ethereum">Ethereum (ETH)</option>
+                                        <option value="usdt">USDT</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Transaction Hash</label>
+                                    <input type="text" id="crypto-hash" placeholder="Enter transaction hash">
+                                </div>
+                            </div>
+                            <div id="wallet-details" class="payment-details" style="display: none;">
+                                <div class="form-group">
+                                    <label>Wallet Provider</label>
+                                    <select id="wallet-provider">
+                                        <option value="opay">OPay</option>
+                                        <option value="moniepoint">Moniepoint</option>
+                                        <option value="palmpay">PalmPay</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Upload Receipt</label>
+                                    <input type="file" id="wallet-receipt" accept="image/*">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn primary">Deposit</button>
+                        </form>
+                    </section>
+
+                    <!-- Withdraw Section -->
+                    <section id="withdraw-section" class="dashboard-section">
+                        <h2>Withdraw Funds</h2>
+                        <form id="withdraw-form" onsubmit="handleWithdraw(event)">
+                            <div class="form-group">
+                                <label>Available Balance</label>
+                                <p class="amount" id="withdraw-balance">₦0.00</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="number" id="withdraw-amount" required min="1000" placeholder="Minimum withdrawal: ₦1,000">
+                            </div>
+                            <div class="form-group">
+                                <label>Bank Name</label>
+                                <select id="withdraw-bank">
+                                    <option value="commercial">Commercial Bank</option>
+                                    <option value="microfinance">Microfinance Bank</option>
+                                    <option value="opay">OPay</option>
+                                    <option value="moniepoint">Moniepoint</option>
+                                    <option value="palmpay">PalmPay</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Account Number</label>
+                                <input type="text" id="withdraw-account" required pattern="\d{10}" maxlength="10" placeholder="Enter 10-digit account number">
+                            </div>
+                            <div class="form-group">
+                                <label>Account Name</label>
+                                <input type="text" id="withdraw-account-name" required placeholder="Enter account name">
+                            </div>
+                            <button type="submit" class="btn primary">Withdraw</button>
+                        </form>
+                    </section>
+
+                    <!-- Matrix Pool Section -->
+                    <section id="matrix-section" class="dashboard-section">
+                        <h2>Matrix Pool Progress</h2>
+                        <div class="matrix-container">
+                            <div class="pool-status">
+                                <h3>Current Pool Status</h3>
+                                <div class="pool-progress-bar">
+                                    <div class="progress-fill" id="pool-fill"></div>
+                                </div>
+                                <p id="pool-status-text">0/11 members</p>
+                            </div>
+                            <div class="matrix-visualization">
+                                <h3>Your Position</h3>
+                                <div id="matrix-positions">
+                                    <p class="loading">Loading matrix positions...</p>
+                                </div>
+                            </div>
+                            <div class="reinvest-options">
+                                <h3>Reinvestment Options</h3>
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" id="auto-reinvest" onchange="toggleAutoReinvest()">
+                                        Auto-reinvest when cycle completes
+                                    </label>
+                                </div>
+                                <button class="btn" onclick="manualReinvest()">Reinvest Now</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Sports Betting Section -->
+                    <section id="betting-section" class="dashboard-section">
+                        <h2>Sports Betting</h2>
+                        <div class="betting-container">
+                            <div class="sports-list">
+                                <button class="sport-btn active" onclick="selectSport('football')">⚽ Football</button>
+                                <button class="sport-btn" onclick="selectSport('basketball')">🏀 Basketball</button>
+                                <button class="sport-btn" onclick="selectSport('tennis')">🎾 Tennis</button>
+                                <button class="sport-btn" onclick="selectSport('virtual')">🎮 Virtual Games</button>
+                            </div>
+                            <div class="matches-container">
+                                <div class="match-card">
+                                    <h3>Manchester United vs Chelsea</h3>
+                                    <p>English Premier League</p>
+                                    <div class="odds">
+                                        <button class="odd-btn" onclick="addBet('Man Utd Win', 2.50)">1: 2.50</button>
+                                        <button class="odd-btn" onclick="addBet('Draw', 3.20)">X: 3.20</button>
+                                        <button class="odd-btn" onclick="addBet('Chelsea Win', 2.80)">2: 2.80</button>
+                                    </div>
+                                </div>
+                                <div class="match-card">
+                                    <h3>Arsenal vs Liverpool</h3>
+                                    <p>English Premier League</p>
+                                    <div class="odds">
+                                        <button class="odd-btn" onclick="addBet('Arsenal Win', 1.90)">1: 1.90</button>
+                                        <button class="odd-btn" onclick="addBet('Draw', 3.50)">X: 3.50</button>
+                                        <button class="odd-btn" onclick="addBet('Liverpool Win', 4.00)">2: 4.00</button>
+                                    </div>
+                                </div>
+                                <div class="match-card">
+                                    <h3>Real Madrid vs Barcelona</h3>
+                                    <p>La Liga</p>
+                                    <div class="odds">
+                                        <button class="odd-btn" onclick="addBet('Real Madrid Win', 2.10)">1: 2.10</button>
+                                        <button class="odd-btn" onclick="addBet('Draw', 3.30)">X: 3.30</button>
+                                        <button class="odd-btn" onclick="addBet('Barcelona Win', 3.50)">2: 3.50</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bet-slip">
+                                <h3>Bet Slip</h3>
+                                <div id="bet-slip-items">
+                                    <p>No bets selected</p>
+                                </div>
+                                <div class="bet-form">
+                                    <input type="number" id="bet-amount" placeholder="Stake Amount">
+                                    <button class="btn" onclick="placeBet()">Place Bet</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Casino Section -->
+                    <section id="casino-section" class="dashboard-section">
+                        <h2>Casino Games</h2>
+                        <div class="casino-games">
+                            <div class="game-card">
+                                <h3>🎰 Slot Machine</h3>
+                                <p>Spin and win big!</p>
+                                <button class="btn" onclick="playSlot()">Play Now</button>
+                            </div>
+                            <div class="game-card">
+                                <h3>🎡 Roulette</h3>
+                                <p>Test your luck!</p>
+                                <button class="btn" onclick="playRoulette()">Play Now</button>
+                            </div>
+                            <div class="game-card">
+                                <h3>🃏 Blackjack</h3>
+                                <p>Beat the dealer!</p>
+                                <button class="btn" onclick="playBlackjack()">Play Now</button>
+                            </div>
+                            <div class="game-card">
+                                <h3>♠️ Poker</h3>
+                                <p>Show your skills!</p>
+                                <button class="btn" onclick="playPoker()">Play Now</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Transactions Section -->
+                    <section id="transactions-section" class="dashboard-section">
+                        <h2>Transaction History</h2>
+                        <div class="transactions-list">
+                            <div class="transaction-filter">
+                                <select id="transaction-filter" onchange="filterTransactions()">
+                                    <option value="all">All Transactions</option>
+                                    <option value="deposits">Deposits</option>
+                                    <option value="withdrawals">Withdrawals</option>
+                                    <option value="contributions">Contributions</option>
+                                    <option value="payouts">Payouts</option>
+                                    <option value="bets">Bets</option>
+                                </select>
+                            </div>
+                            <div id="transactions-container">
+                                <p class="loading">Loading transactions...</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Profile Section -->
+                    <section id="profile-section" class="dashboard-section">
+                        <h2>My Profile</h2>
+                        <div class="profile-info">
+                            <div class="profile-photo">
+                                <img id="profile-image" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23e94560' width='100' height='100'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>?</text></svg>" alt="Profile Photo">
+                            </div>
+                            <div class="profile-details">
+                                <p><strong>Name:</strong> <span id="profile-name">-</span></p>
+                                <p><strong>Account Number:</strong> <span id="profile-account">-</span></p>
+                                <p><strong>Email:</strong> <span id="profile-email">-</span></p>
+                                <p><strong>Phone:</strong> <span id="profile-phone">-</span></p>
+                                <p><strong>Address:</strong> <span id="profile-address">-</span></p>
+                                <p><strong>Status:</strong> <span id="profile-status">-</span></p>
+                            </div>
+                        </div>
+                        <form id="update-profile-form" onsubmit="updateProfile(event)">
+                            <div class="form-group">
+                                <label>Update Password</label>
+                                <input type="password" id="new-password" placeholder="Enter new password">
+                            </div>
+                            <div class="form-group">
+                                <label>Update Phone</label>
+                                <input type="tel" id="update-phone" placeholder="Enter new phone number">
+                            </div>
+                            <button type="submit" class="btn primary">Update Profile</button>
+                        </form>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="page">
+            <nav class="dashboard-nav admin-nav">
+                <div class="logo">
+                    <h3>Admin Panel</h3>
+                    <small class="owner-tag">Olawale Abdul-Ganiyu</small>
+                </div>
+                <div class="user-info">
+                    <span>Administrator</span>
+                    <span class="mode-indicator" id="admin-mode">DEMO MODE</span>
+                    <button class="btn logout" onclick="logout()">Logout</button>
+                </div>
+            </nav>
+
+            <div class="dashboard-content">
+                <aside class="sidebar admin-sidebar">
+                    <button class="nav-btn active" onclick="showAdminSection('admin-overview')">
+                        <span>📊</span> Overview
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('users')">
+                        <span>👥</span> User Management
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('approvals')">
+                        <span>✅</span> Approvals
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('transactions')">
+                        <span>📋</span> Transactions
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('banking')">
+                        <span>🏦</span> Banking
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('withdrawals')">
+                        <span>💸</span> Withdrawals
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('messages')">
+                        <span>💬</span> Messages
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('matrix')">
+                        <span>🔄</span> Matrix Monitor
+                    </button>
+                    <button class="nav-btn" onclick="showAdminSection('betting')">
+                        <span>⚽</span> Betting Monitor
+                    </button>
+                </aside>
+
+                <main class="main-content">
+                    <!-- Admin Overview -->
+                    <section id="admin-overview-section" class="dashboard-section active">
+                        <h2>Admin Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">👥</div>
+                                <h3>Total Users</h3>
+                                <p id="total-users" class="amount">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">💰</div>
+                                <h3>Admin Balance</h3>
+                                <p id="admin-balance" class="amount">₦0.00</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">⏳</div>
+                                <h3>Pending Approvals</h3>
+                                <p id="pending-approvals" class="amount">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">🔄</div>
+                                <h3>Active Matrix Pools</h3>
+                                <p id="active-pools" class="amount">0</p>
+                            </div>
+                        </div>
+                        <div class="admin-activity">
+                            <h3>Recent Activity</h3>
+                            <div id="admin-activity-list">
+                                <p class="loading">Loading activity...</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- User Management -->
+                    <section id="users-section" class="dashboard-section">
+                        <h2>User Management</h2>
+                        <div class="user-filters">
+                            <input type="text" id="user-search" placeholder="Search users..." onkeyup="searchUsers()">
+                            <select id="user-status-filter" onchange="filterUsers()">
+                                <option value="all">All Users</option>
+                                <option value="active">Active</option>
+                                <option value="blocked">Blocked</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                        <div id="users-list">
+                            <p class="loading">Loading users...</p>
+                        </div>
+                    </section>
+
+                    <!-- Approvals Section -->
+                    <section id="approvals-section" class="dashboard-section">
+                        <h2>Pending Approvals</h2>
+                        <div id="approvals-list">
+                            <p class="loading">Loading approvals...</p>
+                        </div>
+                    </section>
+
+                    <!-- Admin Transactions -->
+                    <section id="transactions-section" class="dashboard-section">
+                        <h2>Transaction Monitor</h2>
+                        <div class="transaction-filter">
+                            <select id="admin-transaction-filter" onchange="filterAdminTransactions()">
+                                <option value="all">All Transactions</option>
+                                <option value="deposits">Deposits</option>
+                                <option value="withdrawals">Withdrawals</option>
+                                <option value="charges">Charges</option>
+                            </select>
+                        </div>
+                        <div id="admin-transactions-container">
+                            <p class="loading">Loading transactions...</p>
+                        </div>
+                    </section>
+
+                    <!-- Banking Section -->
+                    <section id="banking-section" class="dashboard-section">
+                        <h2>Banking Operations</h2>
+                        <div class="banking-tabs">
+                            <button class="tab-btn active" onclick="showBankingTab('send')">💸 Send Money</button>
+                            <button class="tab-btn" onclick="showBankingTab('receive')">💵 Receive Money</button>
+                            <button class="tab-btn" onclick="showBankingTab('history')">📜 History</button>
+                        </div>
+                        <div id="send-money-tab" class="banking-tab active">
+                            <form onsubmit="handleAdminSend(event)">
+                                <div class="form-group">
+                                    <label>Bank Name</label>
+                                    <input type="text" id="send-bank-name" required placeholder="Enter bank name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Number</label>
+                                    <input type="text" id="send-account-num" required placeholder="Enter account number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Account Name</label>
+                                    <input type="text" id="send-account-name" required placeholder="Enter account name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" id="send-amount" required placeholder="Enter amount">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" id="send-phone" required placeholder="Enter phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label>Transfer Type</label>
+                                    <select id="transfer-type" onchange="toggleSwiftDetails()">
+                                        <option value="local">Local Transfer</option>
+                                        <option value="international">International Transfer</option>
+                                        <option value="swift">Swift Transfer</option>
+                                        <option value="crypto">Crypto Transfer</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="swift-details" style="display: none;">
+                                    <label>SWIFT Code</label>
+                                    <input type="text" id="swift-code" placeholder="Enter SWIFT code">
+                                </div>
+                                <button type="submit" class="btn primary">Send Money</button>
+                            </form>
+                        </div>
+                        <div id="receive-money-tab" class="banking-tab">
+                            <h3>Receive Money</h3>
+                            <div class="bank-details">
+                                <p><strong>Bank Name:</strong> Global Count Trading Bank</p>
+                                <p><strong>Account Number:</strong> 1234567890</p>
+                                <p><strong>Account Name:</strong> Olawale Abdul-Ganiyu</p>
+                                <p><strong>Bank Address:</strong> Switzerland</p>
+                                <p><strong>SWIFT Code:</strong> GCTSWISS</p>
+                            </div>
+                        </div>
+                        <div id="banking-history-tab" class="banking-tab">
+                            <div id="banking-history-list">
+                                <p class="loading">Loading banking history...</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Withdrawals Section -->
+                    <section id="withdrawals-section" class="dashboard-section">
+                        <h2>Withdrawal Requests</h2>
+                        <div id="withdrawals-list">
+                            <p class="loading">Loading withdrawals...</p>
+                        </div>
+                    </section>
+
+                    <!-- Messages Section -->
+                    <section id="messages-section" class="dashboard-section">
+                        <h2>User Messages</h2>
+                        <div id="messages-list">
+                            <p class="loading">Loading messages...</p>
+                        </div>
+                        <form onsubmit="replyToMessage(event)">
+                            <div class="form-group">
+                                <label>Reply to:</label>
+                                <input type="text" id="reply-to" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Message</label>
+                                <textarea id="reply-message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn primary">Send Reply</button>
+                        </form>
+                    </section>
+
+                    <!-- Matrix Monitor -->
+                    <section id="matrix-section" class="dashboard-section">
+                        <h2>Matrix Pool Monitor</h2>
+                        <div id="matrix-pools-list">
+                            <p class="loading">Loading matrix pools...</p>
+                        </div>
+                    </section>
+
+                    <!-- Betting Monitor -->
+                    <section id="betting-section" class="dashboard-section">
+                        <h2>Betting Monitor</h2>
+                        <div id="betting-stats">
+                            <p class="loading">Loading betting stats...</p>
+                        </div>
+                        <div id="bets-list">
+                            <p class="loading">Loading bets...</p>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+
+        <!-- Legal Documents Page -->
+        <div id="legal-page" class="page">
+            <nav class="navbar">
+                <div class="logo">
+                    <h1>Global Count Trading</h1>
+                    <small class="owner-tag">Olawale Abdul-Ganiyu</small>
+                </div>
+                <button class="btn" onclick="showPage('landing')">Back Home</button>
+            </nav>
+            <div class="legal-content">
+                <h1>Legal Documents & Licenses</h1>
+                
+                <section class="legal-section">
+                    <h2>📜 Gaming License</h2>
+                    <div class="license-document">
+                        <h3>GLOBAL COUNT TRADING GAMING LICENSE</h3>
+                        <p><strong>License Number:</strong> GCT-2024-WW-001</p>
+                        <p><strong>Issue Date:</strong> January 1, 2024</p>
+                        <p><strong>Expiry Date:</strong> December 31, 2030</p>
+                        <p><strong>Jurisdiction:</strong> Worldwide</p>
+                        <p><strong>Owner:</strong> Olawale Abdul-Ganiyu</p>
+                        <p>This license grants Global Count Trading the right to operate gaming, betting, and trading activities globally, subject to local regulations.</p>
+                    </div>
+                </section>
+
+                <section class="legal-section">
+                    <h2>🏢 Business Registration</h2>
+                    <div class="registration-document">
+                        <h3>BUSINESS REGISTRATION CERTIFICATE</h3>
+                        <p><strong>Company Name:</strong> Global Count Trading</p>
+                        <p><strong>Registration Number:</strong> RC-2024-789456</p>
+                        <p><strong>Owner:</strong> Olawale Abdul-Ganiyu</p>
+                        <p><strong>Email:</strong> adeganglobal@gmail.com</p>
+                        <p><strong>Date of Registration:</strong> January 1, 2024</p>
+                    </div>
+                </section>
+
+                <section class="legal-section">
+                    <h2>®️ Trademark Certificate</h2>
+                    <div class="trademark-document">
+                        <h3>TRADEMARK REGISTRATION</h3>
+                        <p><strong>Trademark Name:</strong> Global Count Trading</p>
+                        <p><strong>Trademark Number:</strong> TM-2024-GCT-001</p>
+                        <p><strong>Slogan:</strong> "No Lost No Regrets"</p>
+                        <p><strong>Owner:</strong> Olawale Abdul-Ganiyu</p>
+                        <p><strong>Registration Date:</strong> January 15, 2024</p>
+                        <p>This trademark is protected under international intellectual property laws.</p>
+                    </div>
+                </section>
+
+                <section class="legal-section">
+                    <h2>📋 Terms and Conditions</h2>
+                    <div class="terms-document">
+                        <h3>TERMS OF SERVICE</h3>
+                        <ol>
+                            <li>All participants must be 18 years or older</li>
+                            <li>Contributions are subject to 10% charges upon payout</li>
+                            <li>Withdrawals have a minimum limit of ₦1,000</li>
+                            <li>Auto-reinvest option is available</li>
+                            <li>Plan changes incur 1% fee</li>
+                            <li>Global Count Trading reserves the right to suspend accounts</li>
+                            <li>All transactions are final and binding</li>
+                            <li>Users must provide valid identification documents</li>
+                            <li>Complaints should be directed to adeganglobal@gmail.com</li>
+                            <li>Gaming and betting activities are subject to responsible gaming policies</li>
+                        </ol>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
